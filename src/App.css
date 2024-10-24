@@ -107,9 +107,9 @@ body {
   align-content: center;
 }
 
-#close {
+/* #close {
   display: none;
-}
+} */
 
 #navbar li {
   list-style: none;
@@ -1043,7 +1043,7 @@ abbr {
     align-items: flex-start;
     justify-content: flex-start;
     position: fixed;
-    top: 0;
+    top: 60px;
     right: -300px;
     height: 100vh;
     width: 300px;
@@ -1051,6 +1051,7 @@ abbr {
     box-shadow: 0 40px 60px rgba(0, 0, 0, 0.01);
     padding: 80px 0 0 10px;
     transition: 0.3s ease;
+    z-index: -1;
   }
 
   #navbar.active {
@@ -1076,14 +1077,14 @@ abbr {
     padding-left: 20px;
   }
 
-  #close {
+  /* #close {
     display: initial;
     position: absolute;
     top: 30px;
     left: 30px;
     color: #1a1a1a;
     font-size: 24px;
-  }
+  } */
 
   /* Hero section */
   #hero {
