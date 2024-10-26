@@ -1,7 +1,11 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addItem } from '../utils/CartSlice';
 
 const Card = (props) => {
+    const dispatch = useDispatch();
+
     const { pro_IMG, title, desc, rating, price, id } = props.data;
     return (
         <div className="pro">
@@ -15,7 +19,7 @@ const Card = (props) => {
                 </div>
                 <h4>{price}</h4>
             </div>
-            <button className='cart-btn'><i className="fas fa-shopping-cart add_cart"></i></button>
+            <button onClick={() => dispatch(addItem(props.data))} className='cart-btn'><i className="fas fa-shopping-cart add_cart"></i></button>
         </div>
     )
 }

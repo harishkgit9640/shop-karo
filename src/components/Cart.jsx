@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import product1 from '../assets/img/products/f1.jpg';
-import product5 from '../assets/img/products/f5.jpg';
-import product2 from '../assets/img/products/f2.jpg';
-import product3 from '../assets/img/products/f3.jpg';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItem } from '../utils/CartSlice';
+
 
 const Cart = () => {
+    const dispatch = useDispatch();
+    const CartItems = useSelector((store) => store.cart.items)
+
     return (
         <>
-
             <section id="page_header" className="card_header">
                 <h2>#Proceed to Checkout</h2>
                 <p>Read All About our Company or Products </p>
@@ -26,39 +27,21 @@ const Cart = () => {
                             <td>Subtotal</td>
                         </tr>
                     </thead>
-                    <tbody>
-                        <td><Link href="#"><i className="fas fa-times-circle"></i></Link></td>
-                        <td><img src={product1} alt="item-1" /></td>
-                        <td>Cartoon Astronaut T-Shirts</td>
-                        <td>$118.19</td>
-                        <td><input type="number" value="1" /></td>
-                        <td>$118.19</td>
-                    </tbody>
-                    <tbody>
-                        <td><Link href="#"><i className="fas fa-times-circle"></i></Link></td>
-                        <td><img src={product5} alt="item-5" /></td>
-                        <td>Cartoon Astronaut T-Shirts</td>
-                        <td>$118.19</td>
-                        <td><input type="number" value="1" /></td>
-                        <td>$118.19</td>
-                    </tbody>
-                    <tbody>
-                        <td><Link href="#"><i className="fas fa-times-circle"></i></Link></td>
-                        <td><img src={product2} alt="item-2" /></td>
-                        <td>Cartoon Astronaut T-Shirts</td>
-                        <td>$118.19</td>
-                        <td><input type="number" value="1" /></td>
-                        <td>$118.19</td>
-                    </tbody>
-                    <tbody>
-                        <td><Link href="#"><i className="fas fa-times-circle"></i></Link></td>
-                        <td><img src={product3} alt="item-3" /></td>
-                        <td>Cartoon Astronaut T-Shirts</td>
-                        <td>$118.19</td>
-                        <td><input type="number" value="1" /></td>
-                        <td>$118.19</td>
-                    </tbody>
 
+                    {CartItems &&
+                        CartItems.map((cartItem) => {
+                            return (
+                                <tbody key={cartItem.id}>
+                                    <td><Link onClick={() => dispatch(removeItem(cartItem.id))} ><i className="fas fa-times-circle"></i></Link></td>
+                                    <td><img src={cartItem.pro_IMG} alt="item-1" /></td>
+                                    <td>{cartItem.desc}</td>
+                                    <td>{cartItem.price}</td>
+                                    <td><input type="number" value="1" /></td>
+                                    <td>$118.19</td>
+                                </tbody>
+                            )
+                        })
+                    }
                 </table>
             </section>
 
