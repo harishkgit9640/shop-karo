@@ -11,8 +11,10 @@ export const CartSlice = createSlice({
             state.items.push(action.payload);
         },
         removeItem: (state, action) => {
-            console.log(action.payload);
             state.items.splice(action.payload, 1);
+        },
+        itemQuantity: (state, action) => {
+            state.items.filter((item) => item.id === action.payload.id ? item.price * action.payload.item_count : "no data")
         },
         clearCart: (state, action) => {
             state.items.length = 0;
@@ -20,6 +22,6 @@ export const CartSlice = createSlice({
     }
 })
 
-export const { addItem, removeItem, clearCart } = CartSlice.actions
+export const { addItem, removeItem, clearCart, itemQuantity } = CartSlice.actions
 
 export default CartSlice.reducer

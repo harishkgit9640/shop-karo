@@ -20,8 +20,8 @@ const Navbar = () => {
                     <li><NavLink to="/about">About</NavLink></li>
                     <li><NavLink to="/contact">Contact</NavLink></li>
                     <li className="lg_bag"><NavLink to="/cart"><i className="fa-solid fa-bag-shopping cart_bag"></i></NavLink></li>
-                    <span className='item-count'> {cart_count.length} </span>
                 </ul>
+                <span className='item-count'> {cart_count.length} </span>
             </div>
             <div className="menu_btn">
                 <NavLink to="/cart"><i className="fa-solid fa-bag-shopping cart_bag"></i></NavLink>
